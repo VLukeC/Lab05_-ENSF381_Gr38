@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lab5 - Exercise 1</title>
+</head>
+<body>
+    <input type="text" id="textInput" placeholder="Type something here..."/>
+    <label id="textLabel"></label>
+<button id="redButton">Red</button>
+<button id="blueButton">Blue</button>
+<button id="greenButton">Green</button>
+<button id="orangeButton">Orange</button>
+<button id="purpleButton">Purple</button>
+</body>
+<script type="text/javascript">
+const textInput = document.getElementById('textInput');
+const textLabel = document.getElementById('textLabel');
+textInput.addEventListener("keydown", (event) => {
+    if (event.key == 'Enter'){
+        console.log('Enter key pressed');   
+        document.getElementById('textLabel').textContent= document.getElementById('textInput').value
+textInput.value ="";
+    }
+});
+
+const redButton = document.getElementById("redButton");
+
+redButton.addEventListener("click", changeRed);
+
+function changeRed() {
+    textLabel.style.color = "red";
+}
+
+
+const blueButton = document.getElementById("blueButton");
+
+blueButton.addEventListener("click", changeBlue);
+
+function changeBlue() {
+    textLabel.style.color = "blue";
+}
+
+const greenButton = document.getElementById("greenButton");
+
+greenButton.addEventListener("click", changeGreen);
+
+function changeGreen() {
+    textLabel.style.color = "green";
+}
+
+
+const orangeButton = document.getElementById("orangeButton");
+
+orangeButton.addEventListener("click", changeOrange);
+
+function changeOrange() {
+    textLabel.style.color = "orange";
+}
+
+const purpleButton = document.getElementById("purpleButton");
+
+purpleButton.addEventListener("click", changePurple);
+
+function changePurple() {
+   textLabel.style.color = "purple";
+}
+
+</script>
+</html>
