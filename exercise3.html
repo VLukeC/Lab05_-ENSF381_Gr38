@@ -15,10 +15,10 @@
 <script type="text/javascript">
 const textInput = document.getElementById('textInput');
 const textLabel = document.getElementById('textLabel');
-textInput.addEventListener("keydown", async (event) => {
+textInput.addEventListener("keypress", async (event) => {
     if (event.key == 'Enter'){
         console.log('Enter key pressed');   
-        data = await retrieveData(textInput.value);
+        const data = await retrieveData(textInput.value);
         if(typeof data == "string") {
             textLabel.textContent = data;
         }
@@ -29,47 +29,14 @@ textInput.addEventListener("keydown", async (event) => {
     }
     });
 
-const redButton = document.getElementById("redButton");
+const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+      const color = button.textContent.trim().toLowerCase();
+      button.addEventListener("click", () => {
+        textLabel.style.color = color;
+      });
+    });
 
-redButton.addEventListener("click", changeRed);
-
-function changeRed() {
-    textLabel.style.color = "red";
-}
-
-
-const blueButton = document.getElementById("blueButton");
-
-blueButton.addEventListener("click", changeBlue);
-
-function changeBlue() {
-    textLabel.style.color = "blue";
-}
-
-const greenButton = document.getElementById("greenButton");
-
-greenButton.addEventListener("click", changeGreen);
-
-function changeGreen() {
-    textLabel.style.color = "green";
-}
-
-
-const orangeButton = document.getElementById("orangeButton");
-
-orangeButton.addEventListener("click", changeOrange);
-
-function changeOrange() {
-    textLabel.style.color = "orange";
-}
-
-const purpleButton = document.getElementById("purpleButton");
-
-purpleButton.addEventListener("click", changePurple);
-
-function changePurple() {
-   textLabel.style.color = "purple";
-}
 async function retrieveData(ID) {
             try {
                 const response = await fetch('https://67c1faf461d8935867e4f1e8.mockapi.io/users_api');
